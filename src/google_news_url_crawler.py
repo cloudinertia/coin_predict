@@ -54,7 +54,6 @@ class GoogleNewsURLCrawler:
                 headLineOfSearchResult = searchResult.find_element_by_tag_name('h3')
                 linkElement = headLineOfSearchResult.find_element_by_tag_name('a')
                 urls.append(linkElement.get_attribute('href'))
-                print(linkElement.get_attribute('href'))
             except Exception as errorMessage:
                 print(errorMessage)
                 continue
