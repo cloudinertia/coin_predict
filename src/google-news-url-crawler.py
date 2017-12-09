@@ -64,9 +64,9 @@ class GoogleNewsURLCrawler:
         return urls
 
 # 사용법 예시
-googleNewsURLCrawler = GoogleNewsURLCrawler('stock market', 20)
-googleNewsURLCrawler.next()
-print('\n')
-googleNewsURLCrawler.next()
-print('\n')
-googleNewsURLCrawler.next()
+# googleNewsURLCrawler = GoogleNewsURLCrawler('stock market', 20)
+# googleNewsURLCrawler.next()
+# print('\n')
+# googleNewsURLCrawler.next()
+# print('\n')
+# googleNewsURLCrawler.next()
