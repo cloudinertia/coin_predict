@@ -1,9 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
-from google_news_url_crawler import GoogleNewsURLCrawler
+#from google_news_url_crawler import GoogleNewsURLCrawler
 
 class SiteScraper:
-    #인자: url리스
+    #인자: url 리스트
     def scrap(self, urlsToScrap):
         terms = []
 
