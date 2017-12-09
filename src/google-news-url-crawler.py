@@ -4,6 +4,7 @@ import os
 class GoogleNewsURLCrawler:
     chromeDriver = None
 
+    #인자1: 검색 키워드, 인자2: 한번의 검색 쿼리로 리턴할 결과들의 수
     def __init__(self, keyword, pageSizeToRetreive):
         GoogleNewsURLCrawler.InitializeChromeDriver()
 
@@ -11,6 +12,7 @@ class GoogleNewsURLCrawler:
         self.pageSizeToRetreive = pageSizeToRetreive
         self.queryExpression = GoogleNewsURLCrawler.GetFormattedQueryExpressionForGoogleSearch(keyword)
 
+    #내부 유틸
     @classmethod
     def InitializeChromeDriver(cls):
         if (cls.chromeDriver == None):
@@ -18,6 +20,7 @@ class GoogleNewsURLCrawler:
             cls.chromeDriver = webdriver.Chrome(cwd + '/chromedriver')
             cls.chromeDriver.implicitly_wait(10)
 
+    # 내부 유틸
     @classmethod
     def GetFormattedQueryExpressionForGoogleSearch(cls, keyword):
         queryExpression = ''
@@ -32,13 +35,14 @@ class GoogleNewsURLCrawler:
 
         return queryExpression
 
-    def getNextSearchURL(self):
-        return 'https://www.google.com/search?q={}&start={}&tpe=nws&num={}&hl=en&tpe=nws'.format(self.queryExpression, self
-                                                                                                 .pageCount, self.pageSizeToRetreive)
+    # 내부 유틸
+    @classmethod
+    def getNextSearchURL(cls, queryExpression, pageCount, pageSizeToRetreive):
+        return 'https://www.google.com/search?q={}&start={}&tpe=nws&num={}&hl=en&tpe=nws'.format(queryExpression, pageCount, pageSizeToRetreive)
 
 
     def next(self):
-        searchURL = self.getNextSearchURL()
+        searchURL = GoogleNewsURLCrawler.getNextSearchURL(self.queryExpression, self.pageCount, self.pageSizeToRetreive)
         self.pageCount += self.pageSizeToRetreive
 
         self.chromeDriver.get(searchURL)
@@ -58,3 +62,11 @@ class GoogleNewsURLCrawler:
 
 
         return urls
+
+# 사용법 예시
+googleNewsURLCrawler = GoogleNewsURLCrawler('stock market', 20)
+googleNewsURLCrawler.next()
+print('\n')
+googleNewsURLCrawler.next()
+print('\n')
+googleNewsURLCrawler.next()
