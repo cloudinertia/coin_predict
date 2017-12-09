@@ -31,16 +31,16 @@ class SiteScraper:
         return terms
 
 # 사용예시
-googleNewsURLCrawler = GoogleNewsURLCrawler('stock market', 10)
-siteScraper = SiteScraper()
-terms = siteScraper.scrap(googleNewsURLCrawler.next())
-print(len(terms))
-print(terms)
-terms = siteScraper.scrap(googleNewsURLCrawler.next())
-print(len(terms))
-print(terms)
-terms = siteScraper.scrap(googleNewsURLCrawler.next())
-print(len(terms))
-print(terms)
+# googleNewsURLCrawler = GoogleNewsURLCrawler('stock market', 10)
+# siteScraper = SiteScraper()
+# terms = siteScraper.scrap(googleNewsURLCrawler.next())
+# print(len(terms))
+# print(terms)
+# terms = siteScraper.scrap(googleNewsURLCrawler.next())
+# print(len(terms))
+# print(terms)
+# terms = siteScraper.scrap(googleNewsURLCrawler.next())
+# print(len(terms))
+# print(terms)
 
 
