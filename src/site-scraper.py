@@ -1,12 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
 import pickle
-import datetime
-from google_news_url_crawler import GoogleNewsURLCrawler
+# import datetime
+# from google_news_url_crawler import GoogleNewsURLCrawler
 
 class SiteScraper:
-    #인자1: url 리스트, 인자2: 얻어진 term 리스트를 파일로도 저장할 지 여부
-    def scrap(self, urlsToScrap, writeToFile = bool):
+    #인자1: url 리스트, 인자2: 얻어진 term 리스트를 저장할 파일 경로, 디폴트 값은 파일을 저장하지 않음
+    def scrap(self, urlsToScrap, filePathToWrite=''):
         terms = []
 
         for urlToScrap in urlsToScrap:
@@ -30,13 +30,15 @@ class SiteScraper:
                             print(message)
                             continue;
 
-        if(writeToFile == bool):
-            pickle.dump(terms, open(str(datetime.datetime.now()) + '.terms', 'wb'))
+        if filePathToWrite != '':
+            pickle.dump(terms, open(filePathToWrite, 'wb'))
 
         return terms
 
 # 사용예시
-# terms = siteScraper.scrap(googleNewsURLCrawler.next())
+# googleNewsURLCrawler = GoogleNewsURLCrawler('stock market', 10)
+# siteScraper = SiteScraper()
+# terms = siteScraper.scrap(googleNewsURLCrawler.next(), str(datetime.datetime.now()) + '.terms')
 # print(terms)
 # terms = siteScraper.scrap(googleNewsURLCrawler.next())
 # print(terms)
