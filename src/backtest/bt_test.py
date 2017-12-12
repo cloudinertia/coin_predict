@@ -9,4 +9,3 @@ test = bt.Backtest(s, data)
 res = bt.run(test)
 res.plot()
 plt.show()
-

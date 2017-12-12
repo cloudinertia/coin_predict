@@ -11,18 +11,6 @@ sma = data.rolling(50).mean()
 
 class SelectWhere(bt.Algo):
 
-    """
-    Selects securities based on an indicator DataFrame.
-
-    Selects securities where the value is True on the current date (target.now).
-
-    Args:
-        * signal (DataFrame): DataFrame containing the signal (boolean DataFrame)
-
-    Sets:
-        * selected
-
-    """
     def __init__(self, signal):
         self.signal = signal
 
