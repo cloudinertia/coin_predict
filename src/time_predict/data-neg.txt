@@ -1,0 +1,5 @@
+k q 
+q r
+r q k
+k q
+q r
