@@ -14,7 +14,7 @@ class Corpus:
 
 
     def saveURL(self):
-        filePath = os.getcwd() + '/' + self.keyword + '_' + self.date + '.urls'
+        filePath = os.getcwd() + '/../data/corpus/' + self.keyword + '_' + self.date + '.urls'
         try:
             urlFile = open(filePath, 'rt')
             urlList = urlFile.read()
@@ -46,7 +46,7 @@ class Corpus:
 
     def saveTerms(self):
         try:
-            filePath = os.getcwd() + '/' + self.keyword + '_' + self.date + '.corpus'
+            filePath = os.getcwd() + '/../data/corpus/' + self.keyword + '_' + self.date + '.corpus'
             corpusFile = open(filePath, 'at')
             corpusFile.write(self.terms + ' ')
             corpusFile.close()
@@ -67,3 +67,7 @@ def generateURL():
     return 'url' + str(urlNumber)
 
 
+cor1 = Corpus('k1', 'Dec 8, 2017', generateURL(), generateText())
+cor2 = Corpus('k2', 'Dec 7, 2017', generateURL(), generateText())
+cor1.save()
+cor2.save()
